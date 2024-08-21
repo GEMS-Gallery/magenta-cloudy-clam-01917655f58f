@@ -1,0 +1,15 @@
+type ImageId = nat;
+type Image = 
+ record {
+   data: blob;
+   id: ImageId;
+ };
+service : {
+  deleteImage: (ImageId) -> (bool);
+  getAllImages: () -> (vec record {
+                             ImageId;
+                             Image;
+                           }) query;
+  getImage: (ImageId) -> (opt Image) query;
+  uploadImage: (blob) -> (ImageId);
+}
